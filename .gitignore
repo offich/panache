@@ -46,3 +46,6 @@ app.*.map.json
 
 /extension/devtools/build/*
 !/extension/devtools/build/.gitkeep
+
+# FVM Version Cache
+.fvm/
