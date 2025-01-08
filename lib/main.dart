@@ -1,6 +1,8 @@
+import 'package:devtools_extensions/devtools_extensions.dart';
 import 'package:flutter/material.dart';
+
 import 'package:panache/panache.dart';
 
 void main() {
-  runApp(const Panache());
+  runApp(DevToolsExtension(child: const Panache()));
 }
