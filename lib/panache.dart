@@ -41,49 +41,54 @@ class Panache extends HookWidget {
                       },
                     ),
                   ),
-                  FilledButton(
-                    onPressed: () {
-                      selectedUnit.value = Unit.paragraphs;
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                  Column(
+                    spacing: 16.0,
+                    children: [
+                      FilledButton(
+                        onPressed: () {
+                          selectedUnit.value = Unit.paragraphs;
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Text(Unit.paragraphs.text),
                       ),
-                    ),
-                    child: Text(Unit.paragraphs.text),
-                  ),
-                  FilledButton(
-                    onPressed: () {
-                      selectedUnit.value = Unit.sentences;
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                      FilledButton(
+                        onPressed: () {
+                          selectedUnit.value = Unit.sentences;
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Text(Unit.sentences.text),
                       ),
-                    ),
-                    child: Text(Unit.sentences.text),
-                  ),
-                  FilledButton(
-                    onPressed: () {
-                      selectedUnit.value = Unit.words;
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                      FilledButton(
+                        onPressed: () {
+                          selectedUnit.value = Unit.words;
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Text(Unit.words.text),
                       ),
-                    ),
-                    child: Text(Unit.words.text),
-                  ),
-                  FilledButton(
-                    onPressed: () {
-                      selectedUnit.value = Unit.bytes;
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                      FilledButton(
+                        onPressed: () {
+                          selectedUnit.value = Unit.bytes;
+                        },
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Text(Unit.bytes.text),
                       ),
-                    ),
-                    child: Text(Unit.bytes.text),
+                    ],
                   ),
                 ],
               ),
