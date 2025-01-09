@@ -35,7 +35,7 @@ jobs:
           cache: true
 
       - name: restore pubspec dependencies cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: pubspec_cache_id
         with:
           path: |
