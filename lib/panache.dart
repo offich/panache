@@ -42,34 +42,37 @@ class Panache extends HookWidget {
                       },
                     ),
                   ),
-                  Column(
-                    spacing: 16.0,
-                    children: [
-                      UnitButton(
-                        unit: Unit.paragraphs,
-                        onPressed: () {
-                          selectedUnit.value = Unit.paragraphs;
-                        },
-                      ),
-                      UnitButton(
-                        unit: Unit.sentences,
-                        onPressed: () {
-                          selectedUnit.value = Unit.sentences;
-                        },
-                      ),
-                      UnitButton(
-                        unit: Unit.words,
-                        onPressed: () {
-                          selectedUnit.value = Unit.words;
-                        },
-                      ),
-                      UnitButton(
-                        unit: Unit.bytes,
-                        onPressed: () {
-                          selectedUnit.value = Unit.bytes;
-                        },
-                      ),
-                    ],
+                  FocusTraversalGroup(
+                    policy: WidgetOrderTraversalPolicy(),
+                    child: Column(
+                      spacing: 16.0,
+                      children: [
+                        UnitButton(
+                          unit: Unit.paragraphs,
+                          onPressed: () {
+                            selectedUnit.value = Unit.paragraphs;
+                          },
+                        ),
+                        UnitButton(
+                          unit: Unit.sentences,
+                          onPressed: () {
+                            selectedUnit.value = Unit.sentences;
+                          },
+                        ),
+                        UnitButton(
+                          unit: Unit.words,
+                          onPressed: () {
+                            selectedUnit.value = Unit.words;
+                          },
+                        ),
+                        UnitButton(
+                          unit: Unit.bytes,
+                          onPressed: () {
+                            selectedUnit.value = Unit.bytes;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

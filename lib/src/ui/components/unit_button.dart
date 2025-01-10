@@ -15,9 +15,22 @@ class UnitButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
+    final isFocused = useState(false);
+
+    useEffect(() {
+      focusNode.addListener(() {
+        if (focusNode.hasFocus) {
+          focusNode.requestFocus();
+        }
+
+        isFocused.value = focusNode.hasFocus;
+      });
+
+      return;
+    }, []);
 
     return Container(
-      decoration: focusNode.hasFocus
+      decoration: isFocused.value
           ? ShapeDecoration(
               shape: RoundedRectangleBorder(
                 side: BorderSide(width: 4, color: Colors.indigo),
