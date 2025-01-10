@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/unit.dart';
+import 'package:panache/src/ui/components/unit_button.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Panache extends HookWidget {
@@ -44,49 +45,29 @@ class Panache extends HookWidget {
                   Column(
                     spacing: 16.0,
                     children: [
-                      FilledButton(
+                      UnitButton(
+                        unit: Unit.paragraphs,
                         onPressed: () {
                           selectedUnit.value = Unit.paragraphs;
                         },
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        child: Text(Unit.paragraphs.text),
                       ),
-                      FilledButton(
+                      UnitButton(
+                        unit: Unit.sentences,
                         onPressed: () {
                           selectedUnit.value = Unit.sentences;
                         },
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        child: Text(Unit.sentences.text),
                       ),
-                      FilledButton(
+                      UnitButton(
+                        unit: Unit.words,
                         onPressed: () {
                           selectedUnit.value = Unit.words;
                         },
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        child: Text(Unit.words.text),
                       ),
-                      FilledButton(
+                      UnitButton(
+                        unit: Unit.bytes,
                         onPressed: () {
                           selectedUnit.value = Unit.bytes;
                         },
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        child: Text(Unit.bytes.text),
                       ),
                     ],
                   ),
