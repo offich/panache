@@ -11,6 +11,7 @@ class Panache extends HookWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16.0,
         children: [
           SizedBox(
             width: 200,
