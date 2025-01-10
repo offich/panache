@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/unit.dart';
 
-class UnitButton extends StatelessWidget {
-  const UnitButton({super.key, required this.unit, required this.onPressed});
+class UnitButton extends HookWidget {
+  const UnitButton({
+    super.key,
+    required this.unit,
+    required this.onPressed,
+  });
 
   final Unit unit;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(22),
+    final focusNode = useFocusNode();
+
+    return Container(
+      decoration: focusNode.hasFocus
+          ? ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 4, color: Colors.indigo),
+                borderRadius: BorderRadius.circular(25),
+              ),
+            )
+          : null,
+      child: ElevatedButton(
+        focusNode: focusNode,
+        onPressed: () {
+          onPressed();
+          focusNode.requestFocus();
+        },
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(22),
+          ),
         ),
+        child: Text(unit.text),
       ),
-      child: Text(unit.text),
     );
   }
 }
