@@ -17,7 +17,7 @@ class Panache extends HookWidget {
             width: 200,
             child: Sidebar(),
           ),
-          // 右側（スクロール可能エリア）
+          VerticalDivider(thickness: 4, color: Colors.yellow),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
