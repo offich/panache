@@ -20,6 +20,10 @@ class Sidebar extends HookWidget {
 
     return Column(
       children: [
+        Text(
+          'Panache \n ~ Lorem Ipsum Dummy Text Generator ~',
+          textAlign: TextAlign.center,
+        ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 32.0),
           child: SfSlider(
