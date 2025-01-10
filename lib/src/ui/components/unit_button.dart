@@ -46,7 +46,7 @@ class UnitButton extends HookWidget {
         },
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(25),
           ),
         ),
         child: Text(unit.text),
