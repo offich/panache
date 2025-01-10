@@ -18,70 +18,76 @@ class Panache extends HookWidget {
       return;
     }, [selectedUnit.value]);
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(children: [
-          Row(children: [
-            SizedBox(
-              width: 200,
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 200,
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 32.0),
+                  child: SfSlider(
+                    min: 0.0,
+                    max: selectedUnit.value.max,
+                    interval: selectedUnit.value.interval,
+                    showTicks: true,
+                    showLabels: true,
+                    enableTooltip: true,
+                    value: unitNum.value,
+                    onChanged: (value) {
+                      unitNum.value = value.floor().toDouble();
+                    },
+                  ),
+                ),
+                FocusTraversalGroup(
+                  policy: WidgetOrderTraversalPolicy(),
+                  child: Column(
+                    spacing: 16.0,
+                    children: [
+                      UnitButton(
+                        unit: Unit.paragraphs,
+                        onPressed: () {
+                          selectedUnit.value = Unit.paragraphs;
+                        },
+                      ),
+                      UnitButton(
+                        unit: Unit.sentences,
+                        onPressed: () {
+                          selectedUnit.value = Unit.sentences;
+                        },
+                      ),
+                      UnitButton(
+                        unit: Unit.words,
+                        onPressed: () {
+                          selectedUnit.value = Unit.words;
+                        },
+                      ),
+                      UnitButton(
+                        unit: Unit.bytes,
+                        onPressed: () {
+                          selectedUnit.value = Unit.bytes;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // 右側（スクロール可能エリア）
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 32.0),
-                    child: SfSlider(
-                      min: 0.0,
-                      max: selectedUnit.value.max,
-                      interval: selectedUnit.value.interval,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      value: unitNum.value,
-                      onChanged: (value) {
-                        unitNum.value = value.floor().toDouble();
-                      },
-                    ),
-                  ),
-                  FocusTraversalGroup(
-                    policy: WidgetOrderTraversalPolicy(),
-                    child: Column(
-                      spacing: 16.0,
-                      children: [
-                        UnitButton(
-                          unit: Unit.paragraphs,
-                          onPressed: () {
-                            selectedUnit.value = Unit.paragraphs;
-                          },
-                        ),
-                        UnitButton(
-                          unit: Unit.sentences,
-                          onPressed: () {
-                            selectedUnit.value = Unit.sentences;
-                          },
-                        ),
-                        UnitButton(
-                          unit: Unit.words,
-                          onPressed: () {
-                            selectedUnit.value = Unit.words;
-                          },
-                        ),
-                        UnitButton(
-                          unit: Unit.bytes,
-                          onPressed: () {
-                            selectedUnit.value = Unit.bytes;
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [Text(unitNum.value.toString())],
               ),
             ),
-            Expanded(
-              child: Column(children: [Text(unitNum.value.toString())]),
-            )
-          ])
-        ]),
+          ),
+        ],
       ),
     );
   }
