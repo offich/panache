@@ -17,7 +17,7 @@ class Panache extends HookWidget {
         spacing: 16.0,
         children: [
           SizedBox(
-            width: 200,
+            width: 280,
             child: Sidebar(onNumsChanged: ({
               required paragraphs,
               required sentences,

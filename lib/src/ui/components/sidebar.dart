@@ -49,9 +49,17 @@ class Sidebar extends HookWidget {
             children: [
               Column(spacing: 4.0, children: [
                 Text(Unit.paragraphs.text),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SfSlider(
+                Row(children: [
+                  IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.remove),
+                    onPressed: paragraphsNum.value > 0
+                        ? () {
+                            paragraphsNum.value -= 1;
+                          }
+                        : null,
+                  ),
+                  SfSlider(
                     min: 0.0,
                     max: Unit.paragraphs.max,
                     interval: Unit.paragraphs.interval,
@@ -63,49 +71,92 @@ class Sidebar extends HookWidget {
                       paragraphsNum.value = value.floor();
                     },
                   ),
-                ),
+                  IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.add),
+                    onPressed: paragraphsNum.value < Unit.paragraphs.max
+                        ? () {
+                            paragraphsNum.value += 1;
+                          }
+                        : null,
+                  ),
+                ]),
               ]),
               Column(spacing: 4.0, children: [
                 Text(Unit.sentences.text),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SfSlider(
-                    min: 0.0,
-                    max: Unit.sentences.max,
-                    interval: Unit.sentences.interval,
-                    showTicks: true,
-                    showLabels: true,
-                    enableTooltip: true,
-                    value: sentencesNum.value,
-                    onChanged: (value) {
-                      sentencesNum.value = value.floor();
-                    },
+                Row(children: [
+                  IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.remove),
+                    onPressed: sentencesNum.value > 0
+                        ? () {
+                            sentencesNum.value -= 1;
+                          }
+                        : null,
                   ),
-                ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: SfSlider(
+                      min: 0.0,
+                      max: Unit.sentences.max,
+                      interval: Unit.sentences.interval,
+                      showTicks: true,
+                      showLabels: true,
+                      enableTooltip: true,
+                      value: sentencesNum.value,
+                      onChanged: (value) {
+                        sentencesNum.value = value.floor();
+                      },
+                    ),
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.add),
+                    onPressed: sentencesNum.value < Unit.sentences.max
+                        ? () {
+                            sentencesNum.value += 1;
+                          }
+                        : null,
+                  ),
+                ]),
               ]),
               Column(spacing: 4.0, children: [
                 Text(Unit.words.text),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SfSlider(
-                    min: 0.0,
-                    max: Unit.words.max,
-                    interval: Unit.words.interval,
-                    showTicks: true,
-                    showLabels: true,
-                    enableTooltip: true,
-                    value: wordsNum.value,
-                    onChanged: (value) {
-                      wordsNum.value = value.floor();
-
-                      onNumsChanged(
-                        paragraphs: paragraphsNum.value,
-                        sentences: sentencesNum.value,
-                        words: wordsNum.value,
-                      );
-                    },
+                Row(children: [
+                  IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.remove),
+                    onPressed: wordsNum.value > 0
+                        ? () {
+                            wordsNum.value -= 1;
+                          }
+                        : null,
                   ),
-                ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: SfSlider(
+                      min: 0.0,
+                      max: Unit.words.max,
+                      interval: Unit.words.interval,
+                      showTicks: true,
+                      showLabels: true,
+                      enableTooltip: true,
+                      value: wordsNum.value,
+                      onChanged: (value) {
+                        wordsNum.value = value.floor();
+                      },
+                    ),
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    icon: const Icon(Icons.add),
+                    onPressed: wordsNum.value < Unit.words.max
+                        ? () {
+                            wordsNum.value += 1;
+                          }
+                        : null,
+                  ),
+                ]),
               ]),
             ],
           ),
