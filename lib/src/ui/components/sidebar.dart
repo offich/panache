@@ -38,16 +38,19 @@ class Sidebar extends HookWidget {
     }, [paragraphsNum.value, sentencesNum.value, wordsNum.value]);
 
     return Column(
+      spacing: 24.0,
       children: [
-        Text(
-          'Panache',
-          textAlign: TextAlign.center,
-          style: PanacheTextStyle.largeBold,
-        ),
-        Text(
-          '~ Lorem Ipsum Dummy Text Generator ~',
-          style: PanacheTextStyle.medium,
-        ),
+        Column(children: [
+          Text(
+            'Panache',
+            textAlign: TextAlign.center,
+            style: PanacheTextStyle.largeBold,
+          ),
+          Text(
+            '~ Lorem Ipsum Dummy Text Generator ~',
+            style: PanacheTextStyle.medium,
+          ),
+        ]),
         FocusTraversalGroup(
           policy: WidgetOrderTraversalPolicy(),
           child: Column(
