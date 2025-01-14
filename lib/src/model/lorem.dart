@@ -59,7 +59,7 @@ class Lorem {
 
     String randomWord;
     do {
-      randomWord = WORDS[random.nextInt(WORDS.length)];
+      randomWord = constantWords[random.nextInt(constantWords.length)];
     } while (n > 0 && randomWord.length > 5);
 
     return randomWord;

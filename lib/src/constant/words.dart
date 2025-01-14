@@ -1,4 +1,4 @@
-const List<String> WORDS = [
+const List<String> constantWords = [
   "ad",
   "adipiscing",
   "aliqua",
