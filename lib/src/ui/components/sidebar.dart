@@ -1,22 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:panache/src/model/debouncer.dart';
 import 'package:panache/src/model/unit.dart';
-import 'package:panache/src/ui/components/unit_button.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Sidebar extends HookWidget {
-  const Sidebar({super.key});
+  final Function({
+    required int paragraphs,
+    required int sentences,
+    required int words,
+  }) onNumsChanged;
+
+  const Sidebar({
+    super.key,
+    required this.onNumsChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final selectedUnit = useState<Unit>(Unit.paragraphs);
+    final paragraphsNum = useState<int>(Unit.paragraphs.defaultNum);
+    final sentencesNum = useState<int>(Unit.sentences.defaultNum);
+    final wordsNum = useState<int>(Unit.words.defaultNum);
 
-    final unitNum = useState<double>(0.0);
+    final debouncer = Debouncer(millseconds: 200);
 
     useEffect(() {
-      unitNum.value = 0;
+      debouncer.run(() {
+        onNumsChanged(
+          paragraphs: paragraphsNum.value,
+          sentences: sentencesNum.value,
+          words: wordsNum.value,
+        );
+      });
+
       return;
-    }, [selectedUnit.value]);
+    }, [paragraphsNum.value, sentencesNum.value, wordsNum.value]);
 
     return Column(
       children: [
@@ -24,50 +42,71 @@ class Sidebar extends HookWidget {
           'Panache \n ~ Lorem Ipsum Dummy Text Generator ~',
           textAlign: TextAlign.center,
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 32.0),
-          child: SfSlider(
-            min: 0.0,
-            max: selectedUnit.value.max,
-            interval: selectedUnit.value.interval,
-            showTicks: true,
-            showLabels: true,
-            enableTooltip: true,
-            value: unitNum.value,
-            onChanged: (value) {
-              unitNum.value = value.floor().toDouble();
-            },
-          ),
-        ),
         FocusTraversalGroup(
           policy: WidgetOrderTraversalPolicy(),
           child: Column(
             spacing: 16.0,
             children: [
-              UnitButton(
-                unit: Unit.paragraphs,
-                onPressed: () {
-                  selectedUnit.value = Unit.paragraphs;
-                },
-              ),
-              UnitButton(
-                unit: Unit.sentences,
-                onPressed: () {
-                  selectedUnit.value = Unit.sentences;
-                },
-              ),
-              UnitButton(
-                unit: Unit.words,
-                onPressed: () {
-                  selectedUnit.value = Unit.words;
-                },
-              ),
-              UnitButton(
-                unit: Unit.bytes,
-                onPressed: () {
-                  selectedUnit.value = Unit.bytes;
-                },
-              ),
+              Column(spacing: 4.0, children: [
+                Text(Unit.paragraphs.text),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: SfSlider(
+                    min: 0.0,
+                    max: Unit.paragraphs.max,
+                    interval: Unit.paragraphs.interval,
+                    showTicks: true,
+                    showLabels: true,
+                    enableTooltip: true,
+                    value: paragraphsNum.value,
+                    onChanged: (value) {
+                      paragraphsNum.value = value.floor();
+                    },
+                  ),
+                ),
+              ]),
+              Column(spacing: 4.0, children: [
+                Text(Unit.sentences.text),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: SfSlider(
+                    min: 0.0,
+                    max: Unit.sentences.max,
+                    interval: Unit.sentences.interval,
+                    showTicks: true,
+                    showLabels: true,
+                    enableTooltip: true,
+                    value: sentencesNum.value,
+                    onChanged: (value) {
+                      sentencesNum.value = value.floor();
+                    },
+                  ),
+                ),
+              ]),
+              Column(spacing: 4.0, children: [
+                Text(Unit.words.text),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: SfSlider(
+                    min: 0.0,
+                    max: Unit.words.max,
+                    interval: Unit.words.interval,
+                    showTicks: true,
+                    showLabels: true,
+                    enableTooltip: true,
+                    value: wordsNum.value,
+                    onChanged: (value) {
+                      wordsNum.value = value.floor();
+
+                      onNumsChanged(
+                        paragraphs: paragraphsNum.value,
+                        sentences: sentencesNum.value,
+                        words: wordsNum.value,
+                      );
+                    },
+                  ),
+                ),
+              ]),
             ],
           ),
         ),
