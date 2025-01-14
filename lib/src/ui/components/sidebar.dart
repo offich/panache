@@ -47,66 +47,123 @@ class Sidebar extends HookWidget {
           child: Column(
             spacing: 16.0,
             children: [
-              Column(spacing: 4.0, children: [
-                Text(Unit.paragraphs.text),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SfSlider(
-                    min: 0.0,
-                    max: Unit.paragraphs.max,
-                    interval: Unit.paragraphs.interval,
-                    showTicks: true,
-                    showLabels: true,
-                    enableTooltip: true,
-                    value: paragraphsNum.value,
-                    onChanged: (value) {
-                      paragraphsNum.value = value.floor();
-                    },
-                  ),
-                ),
-              ]),
-              Column(spacing: 4.0, children: [
-                Text(Unit.sentences.text),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SfSlider(
-                    min: 0.0,
-                    max: Unit.sentences.max,
-                    interval: Unit.sentences.interval,
-                    showTicks: true,
-                    showLabels: true,
-                    enableTooltip: true,
-                    value: sentencesNum.value,
-                    onChanged: (value) {
-                      sentencesNum.value = value.floor();
-                    },
-                  ),
-                ),
-              ]),
-              Column(spacing: 4.0, children: [
-                Text(Unit.words.text),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SfSlider(
-                    min: 0.0,
-                    max: Unit.words.max,
-                    interval: Unit.words.interval,
-                    showTicks: true,
-                    showLabels: true,
-                    enableTooltip: true,
-                    value: wordsNum.value,
-                    onChanged: (value) {
-                      wordsNum.value = value.floor();
-
-                      onNumsChanged(
-                        paragraphs: paragraphsNum.value,
-                        sentences: sentencesNum.value,
-                        words: wordsNum.value,
-                      );
-                    },
-                  ),
-                ),
-              ]),
+              Column(
+                spacing: 4.0,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Unit.paragraphs.text),
+                  Row(children: [
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.remove),
+                      onPressed: paragraphsNum.value > 0
+                          ? () {
+                              paragraphsNum.value -= 1;
+                            }
+                          : null,
+                    ),
+                    SfSlider(
+                      min: 0.0,
+                      max: Unit.paragraphs.max,
+                      interval: Unit.paragraphs.interval,
+                      showTicks: true,
+                      showLabels: true,
+                      enableTooltip: true,
+                      value: paragraphsNum.value,
+                      onChanged: (value) {
+                        paragraphsNum.value = value.floor();
+                      },
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.add),
+                      onPressed: paragraphsNum.value < Unit.paragraphs.max
+                          ? () {
+                              paragraphsNum.value += 1;
+                            }
+                          : null,
+                    ),
+                  ]),
+                ],
+              ),
+              Column(
+                spacing: 4.0,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Unit.sentences.text),
+                  Row(children: [
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.remove),
+                      onPressed: sentencesNum.value > 0
+                          ? () {
+                              sentencesNum.value -= 1;
+                            }
+                          : null,
+                    ),
+                    SfSlider(
+                      min: 0.0,
+                      max: Unit.sentences.max,
+                      interval: Unit.sentences.interval,
+                      showTicks: true,
+                      showLabels: true,
+                      enableTooltip: true,
+                      value: sentencesNum.value,
+                      onChanged: (value) {
+                        sentencesNum.value = value.floor();
+                      },
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.add),
+                      onPressed: sentencesNum.value < Unit.sentences.max
+                          ? () {
+                              sentencesNum.value += 1;
+                            }
+                          : null,
+                    ),
+                  ]),
+                ],
+              ),
+              Column(
+                spacing: 4.0,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Unit.words.text),
+                  Row(children: [
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.remove),
+                      onPressed: wordsNum.value > 0
+                          ? () {
+                              wordsNum.value -= 1;
+                            }
+                          : null,
+                    ),
+                    SfSlider(
+                      min: 0.0,
+                      max: Unit.words.max,
+                      interval: Unit.words.interval,
+                      showTicks: true,
+                      showLabels: true,
+                      enableTooltip: true,
+                      value: wordsNum.value,
+                      onChanged: (value) {
+                        wordsNum.value = value.floor();
+                      },
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      icon: const Icon(Icons.add),
+                      onPressed: wordsNum.value < Unit.words.max
+                          ? () {
+                              wordsNum.value += 1;
+                            }
+                          : null,
+                    ),
+                  ]),
+                ],
+              ),
             ],
           ),
         ),
