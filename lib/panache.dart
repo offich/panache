@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:panache/src/model/lorem.dart';
 import 'package:panache/src/ui/components/sidebar.dart';
 
 class Panache extends HookWidget {
@@ -7,6 +8,8 @@ class Panache extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final generated = useState(Lorem().generate());
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
@@ -15,7 +18,17 @@ class Panache extends HookWidget {
         children: [
           SizedBox(
             width: 200,
-            child: Sidebar(),
+            child: Sidebar(onNumsChanged: ({
+              required paragraphs,
+              required sentences,
+              required words,
+            }) {
+              generated.value = Lorem().generate(
+                paragraphs: paragraphs,
+                sentences: sentences,
+                words: words,
+              );
+            }),
           ),
           VerticalDivider(thickness: 4, color: Colors.yellow),
           Expanded(
@@ -23,7 +36,7 @@ class Panache extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [Text(0.toString())],
+                children: [Text(generated.value)],
               ),
             ),
           ),

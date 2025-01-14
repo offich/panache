@@ -35,4 +35,17 @@ extension UnitProps on Unit {
         return 'Bytes';
     }
   }
+
+  int get defaultNum {
+    switch (this) {
+      case Unit.paragraphs:
+        return 1;
+      case Unit.sentences:
+        return 3;
+      case Unit.words:
+        return 8;
+      case Unit.bytes:
+        return 0;
+    }
+  }
 }
