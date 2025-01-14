@@ -94,20 +94,17 @@ class Sidebar extends HookWidget {
                           }
                         : null,
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: SfSlider(
-                      min: 0.0,
-                      max: Unit.sentences.max,
-                      interval: Unit.sentences.interval,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      value: sentencesNum.value,
-                      onChanged: (value) {
-                        sentencesNum.value = value.floor();
-                      },
-                    ),
+                  SfSlider(
+                    min: 0.0,
+                    max: Unit.sentences.max,
+                    interval: Unit.sentences.interval,
+                    showTicks: true,
+                    showLabels: true,
+                    enableTooltip: true,
+                    value: sentencesNum.value,
+                    onChanged: (value) {
+                      sentencesNum.value = value.floor();
+                    },
                   ),
                   IconButton(
                     padding: EdgeInsets.all(0.0),
@@ -132,20 +129,17 @@ class Sidebar extends HookWidget {
                           }
                         : null,
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: SfSlider(
-                      min: 0.0,
-                      max: Unit.words.max,
-                      interval: Unit.words.interval,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      value: wordsNum.value,
-                      onChanged: (value) {
-                        wordsNum.value = value.floor();
-                      },
-                    ),
+                  SfSlider(
+                    min: 0.0,
+                    max: Unit.words.max,
+                    interval: Unit.words.interval,
+                    showTicks: true,
+                    showLabels: true,
+                    enableTooltip: true,
+                    value: wordsNum.value,
+                    onChanged: (value) {
+                      wordsNum.value = value.floor();
+                    },
                   ),
                   IconButton(
                     padding: EdgeInsets.all(0.0),
