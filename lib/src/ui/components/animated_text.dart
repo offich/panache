@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:panache/src/ui/style/text.dart';
 
 class AnimatedText extends HookWidget {
   final String text;
@@ -49,7 +50,7 @@ class AnimatedText extends HookWidget {
       position: offsetAnimation.value!,
       child: FadeTransition(
         opacity: opacityAnimation.value!,
-        child: SelectableText(text),
+        child: SelectableText(text, style: PanacheTextStyle.medium),
       ),
     );
   }

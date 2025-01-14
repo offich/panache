@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/debouncer.dart';
 import 'package:panache/src/model/unit.dart';
+import 'package:panache/src/ui/style/text.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Sidebar extends HookWidget {
@@ -39,8 +40,13 @@ class Sidebar extends HookWidget {
     return Column(
       children: [
         Text(
-          'Panache \n ~ Lorem Ipsum Dummy Text Generator ~',
+          'Panache',
           textAlign: TextAlign.center,
+          style: PanacheTextStyle.largeBold,
+        ),
+        Text(
+          '~ Lorem Ipsum Dummy Text Generator ~',
+          style: PanacheTextStyle.medium,
         ),
         FocusTraversalGroup(
           policy: WidgetOrderTraversalPolicy(),
@@ -51,7 +57,10 @@ class Sidebar extends HookWidget {
                 spacing: 4.0,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(Unit.paragraphs.text),
+                  Text(
+                    Unit.paragraphs.text,
+                    style: PanacheTextStyle.medium,
+                  ),
                   Row(children: [
                     IconButton(
                       padding: EdgeInsets.all(0.0),
@@ -90,7 +99,10 @@ class Sidebar extends HookWidget {
                 spacing: 4.0,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(Unit.sentences.text),
+                  Text(
+                    Unit.sentences.text,
+                    style: PanacheTextStyle.medium,
+                  ),
                   Row(children: [
                     IconButton(
                       padding: EdgeInsets.all(0.0),
@@ -129,7 +141,10 @@ class Sidebar extends HookWidget {
                 spacing: 4.0,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(Unit.words.text),
+                  Text(
+                    Unit.words.text,
+                    style: PanacheTextStyle.medium,
+                  ),
                   Row(children: [
                     IconButton(
                       padding: EdgeInsets.all(0.0),
