@@ -141,10 +141,10 @@ class Sidebar extends HookWidget {
                     ),
                     SfSliderTheme(
                       data: SfSliderThemeData(
-                        activeTrackColor: paragraphsNum.value > 0
+                        activeTrackColor: sentencesNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
-                        inactiveTrackColor: paragraphsNum.value > 0
+                        inactiveTrackColor: sentencesNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
                         thumbColor: PanacheColor.primaryColor,
@@ -204,10 +204,10 @@ class Sidebar extends HookWidget {
                     ),
                     SfSliderTheme(
                       data: SfSliderThemeData(
-                        activeTrackColor: paragraphsNum.value > 0
+                        activeTrackColor: wordsNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
-                        inactiveTrackColor: paragraphsNum.value > 0
+                        inactiveTrackColor: wordsNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
                         thumbColor: PanacheColor.primaryColor,
