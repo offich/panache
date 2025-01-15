@@ -47,7 +47,7 @@ class Sidebar extends HookWidget {
             style: PanacheTextStyle.largeBold,
           ),
           Text(
-            '~ Lorem Ipsum Dummy Text Generator ~',
+            'Lorem Ipsum Dummy Text Generator',
             style: PanacheTextStyle.medium,
           ),
         ]),
