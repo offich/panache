@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/debouncer.dart';
 import 'package:panache/src/model/unit.dart';
+import 'package:panache/src/ui/style/color.dart';
 import 'package:panache/src/ui/style/text.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Sidebar extends HookWidget {
@@ -68,27 +70,48 @@ class Sidebar extends HookWidget {
                     IconButton(
                       padding: EdgeInsets.all(0.0),
                       icon: const Icon(Icons.remove),
+                      color: PanacheColor.secondaryColor,
+                      hoverColor:
+                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: paragraphsNum.value > 0
                           ? () {
                               paragraphsNum.value -= 1;
                             }
                           : null,
                     ),
-                    SfSlider(
-                      min: 0.0,
-                      max: Unit.paragraphs.max,
-                      interval: Unit.paragraphs.interval,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      value: paragraphsNum.value,
-                      onChanged: (value) {
-                        paragraphsNum.value = value.floor();
-                      },
+                    SfSliderTheme(
+                      data: SfSliderThemeData(
+                        activeTrackColor: paragraphsNum.value > 0
+                            ? PanacheColor.secondaryColor
+                            : PanacheColor.errorColor,
+                        inactiveTrackColor: paragraphsNum.value > 0
+                            ? PanacheColor.secondaryColor
+                            : PanacheColor.errorColor,
+                        thumbColor: PanacheColor.primaryColor,
+                        tooltipBackgroundColor: PanacheColor.primaryColor,
+                        overlayColor:
+                            PanacheColor.primaryColor.withValues(alpha: 0.1),
+                        overlayRadius: 20.0,
+                      ),
+                      child: SfSlider(
+                        min: 0.0,
+                        max: Unit.paragraphs.max,
+                        interval: Unit.paragraphs.interval,
+                        showTicks: true,
+                        showLabels: true,
+                        enableTooltip: true,
+                        value: paragraphsNum.value,
+                        onChanged: (value) {
+                          paragraphsNum.value = value.floor();
+                        },
+                      ),
                     ),
                     IconButton(
                       padding: EdgeInsets.all(0.0),
                       icon: const Icon(Icons.add),
+                      color: PanacheColor.primaryColor,
+                      hoverColor:
+                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: paragraphsNum.value < Unit.paragraphs.max
                           ? () {
                               paragraphsNum.value += 1;
@@ -110,27 +133,48 @@ class Sidebar extends HookWidget {
                     IconButton(
                       padding: EdgeInsets.all(0.0),
                       icon: const Icon(Icons.remove),
+                      color: PanacheColor.secondaryColor,
+                      hoverColor:
+                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: sentencesNum.value > 0
                           ? () {
                               sentencesNum.value -= 1;
                             }
                           : null,
                     ),
-                    SfSlider(
-                      min: 0.0,
-                      max: Unit.sentences.max,
-                      interval: Unit.sentences.interval,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      value: sentencesNum.value,
-                      onChanged: (value) {
-                        sentencesNum.value = value.floor();
-                      },
+                    SfSliderTheme(
+                      data: SfSliderThemeData(
+                        activeTrackColor: paragraphsNum.value > 0
+                            ? PanacheColor.secondaryColor
+                            : PanacheColor.errorColor,
+                        inactiveTrackColor: paragraphsNum.value > 0
+                            ? PanacheColor.secondaryColor
+                            : PanacheColor.errorColor,
+                        thumbColor: PanacheColor.primaryColor,
+                        tooltipBackgroundColor: PanacheColor.primaryColor,
+                        overlayColor:
+                            PanacheColor.primaryColor.withValues(alpha: 0.1),
+                        overlayRadius: 20.0,
+                      ),
+                      child: SfSlider(
+                        min: 0.0,
+                        max: Unit.sentences.max,
+                        interval: Unit.sentences.interval,
+                        showTicks: true,
+                        showLabels: true,
+                        enableTooltip: true,
+                        value: sentencesNum.value,
+                        onChanged: (value) {
+                          sentencesNum.value = value.floor();
+                        },
+                      ),
                     ),
                     IconButton(
                       padding: EdgeInsets.all(0.0),
                       icon: const Icon(Icons.add),
+                      color: PanacheColor.primaryColor,
+                      hoverColor:
+                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: sentencesNum.value < Unit.sentences.max
                           ? () {
                               sentencesNum.value += 1;
@@ -152,27 +196,48 @@ class Sidebar extends HookWidget {
                     IconButton(
                       padding: EdgeInsets.all(0.0),
                       icon: const Icon(Icons.remove),
+                      color: PanacheColor.secondaryColor,
+                      hoverColor:
+                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: wordsNum.value > 0
                           ? () {
                               wordsNum.value -= 1;
                             }
                           : null,
                     ),
-                    SfSlider(
-                      min: 0.0,
-                      max: Unit.words.max,
-                      interval: Unit.words.interval,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      value: wordsNum.value,
-                      onChanged: (value) {
-                        wordsNum.value = value.floor();
-                      },
+                    SfSliderTheme(
+                      data: SfSliderThemeData(
+                        activeTrackColor: paragraphsNum.value > 0
+                            ? PanacheColor.secondaryColor
+                            : PanacheColor.errorColor,
+                        inactiveTrackColor: paragraphsNum.value > 0
+                            ? PanacheColor.secondaryColor
+                            : PanacheColor.errorColor,
+                        thumbColor: PanacheColor.primaryColor,
+                        tooltipBackgroundColor: PanacheColor.primaryColor,
+                        overlayColor:
+                            PanacheColor.primaryColor.withValues(alpha: 0.1),
+                        overlayRadius: 20.0,
+                      ),
+                      child: SfSlider(
+                        min: 0.0,
+                        max: Unit.words.max,
+                        interval: Unit.words.interval,
+                        showTicks: true,
+                        showLabels: true,
+                        enableTooltip: true,
+                        value: wordsNum.value,
+                        onChanged: (value) {
+                          wordsNum.value = value.floor();
+                        },
+                      ),
                     ),
                     IconButton(
                       padding: EdgeInsets.all(0.0),
                       icon: const Icon(Icons.add),
+                      color: PanacheColor.primaryColor,
+                      hoverColor:
+                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: wordsNum.value < Unit.words.max
                           ? () {
                               wordsNum.value += 1;

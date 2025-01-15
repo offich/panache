@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/lorem.dart';
 import 'package:panache/src/ui/components/animated_text.dart';
 import 'package:panache/src/ui/components/sidebar.dart';
+import 'package:panache/src/ui/style/color.dart';
 
 class Panache extends HookWidget {
   const Panache({super.key});
@@ -34,7 +35,10 @@ class Panache extends HookWidget {
                   );
                 }),
               ),
-              VerticalDivider(thickness: 4, color: Colors.yellow),
+              VerticalDivider(
+                thickness: 4,
+                color: PanacheColor.primaryColor,
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -55,8 +59,8 @@ class Panache extends HookWidget {
             height: 48,
             child: IconButton(
               style: IconButton.styleFrom(
-                foregroundColor: Colors.orange,
-                backgroundColor: Colors.yellow,
+                foregroundColor: PanacheColor.secondaryColor,
+                backgroundColor: PanacheColor.thirdlyColor,
               ),
               padding: EdgeInsets.all(0.0),
               icon: const Icon(Icons.copy),
