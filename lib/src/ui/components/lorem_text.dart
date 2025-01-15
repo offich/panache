@@ -35,6 +35,12 @@ class LoremText extends HookWidget {
       return;
     }, []);
 
+    useEffect(() {
+      animationController.forward(from: 0.0);
+
+      return;
+    }, [text]);
+
     if (offsetAnimation.value == null || opacityAnimation.value == null) {
       return SizedBox.shrink();
     }
