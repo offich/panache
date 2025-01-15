@@ -75,7 +75,7 @@ class Sidebar extends HookWidget {
                           : null,
                     ),
                     SfSlider(
-                      min: 1.0,
+                      min: 0.0,
                       max: Unit.paragraphs.max,
                       interval: Unit.paragraphs.interval,
                       showTicks: true,
@@ -117,7 +117,7 @@ class Sidebar extends HookWidget {
                           : null,
                     ),
                     SfSlider(
-                      min: 1.0,
+                      min: 0.0,
                       max: Unit.sentences.max,
                       interval: Unit.sentences.interval,
                       showTicks: true,
@@ -159,7 +159,7 @@ class Sidebar extends HookWidget {
                           : null,
                     ),
                     SfSlider(
-                      min: 1.0,
+                      min: 0.0,
                       max: Unit.words.max,
                       interval: Unit.words.interval,
                       showTicks: true,
