@@ -86,6 +86,7 @@ class Sidebar extends HookWidget {
                             : PanacheColor.errorColor,
                         thumbColor: PanacheColor.primaryColor,
                         tooltipBackgroundColor: PanacheColor.primaryColor,
+                        tooltipTextStyle: TextStyle(color: Colors.black),
                         overlayColor:
                             PanacheColor.primaryColor.withValues(alpha: 0.1),
                         overlayRadius: 20.0,
@@ -149,6 +150,7 @@ class Sidebar extends HookWidget {
                             : PanacheColor.errorColor,
                         thumbColor: PanacheColor.primaryColor,
                         tooltipBackgroundColor: PanacheColor.primaryColor,
+                        tooltipTextStyle: TextStyle(color: Colors.black),
                         overlayColor:
                             PanacheColor.primaryColor.withValues(alpha: 0.1),
                         overlayRadius: 20.0,
@@ -212,6 +214,7 @@ class Sidebar extends HookWidget {
                             : PanacheColor.errorColor,
                         thumbColor: PanacheColor.primaryColor,
                         tooltipBackgroundColor: PanacheColor.primaryColor,
+                        tooltipTextStyle: TextStyle(color: Colors.black),
                         overlayColor:
                             PanacheColor.primaryColor.withValues(alpha: 0.1),
                         overlayRadius: 20.0,
