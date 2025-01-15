@@ -49,7 +49,7 @@ class AnimatedText extends HookWidget {
       position: offsetAnimation.value!,
       child: FadeTransition(
         opacity: opacityAnimation.value!,
-        child: Text(text),
+        child: SelectableText(text),
       ),
     );
   }
