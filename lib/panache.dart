@@ -5,6 +5,7 @@ import 'package:panache/src/model/lorem.dart';
 import 'package:panache/src/ui/components/animated_text.dart';
 import 'package:panache/src/ui/components/sidebar.dart';
 import 'package:panache/src/ui/style/color.dart';
+import 'package:panache/src/ui/style/text.dart';
 
 class Panache extends HookWidget {
   const Panache({super.key});
@@ -66,8 +67,13 @@ class Panache extends HookWidget {
               icon: const Icon(Icons.copy),
               onPressed: () async {
                 final snackBar = SnackBar(
+                  backgroundColor: PanacheColor.primaryColor,
                   width: 360.0,
-                  content: const Text("Copied Text!!"),
+                  content: Text(
+                    "Copied Text!!",
+                    style:
+                        PanacheTextStyle.medium.copyWith(color: Colors.black),
+                  ),
                   duration: const Duration(seconds: 2),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
