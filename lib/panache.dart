@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/lorem.dart';
+import 'package:panache/src/ui/components/animated_text.dart';
 import 'package:panache/src/ui/components/sidebar.dart';
 
 class Panache extends HookWidget {
@@ -36,7 +37,7 @@ class Panache extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [Text(generated.value)],
+                children: [AnimatedText(text: generated.value)],
               ),
             ),
           ),
