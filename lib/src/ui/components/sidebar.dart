@@ -84,6 +84,8 @@ class Sidebar extends HookWidget {
                         inactiveTrackColor: paragraphsNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
+                        activeTickColor: PanacheColor.secondaryColor,
+                        inactiveTickColor: PanacheColor.secondaryColor,
                         thumbColor: PanacheColor.primaryColor,
                         tooltipBackgroundColor: PanacheColor.primaryColor,
                         tooltipTextStyle: TextStyle(color: Colors.black),
@@ -148,6 +150,8 @@ class Sidebar extends HookWidget {
                         inactiveTrackColor: sentencesNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
+                        activeTickColor: PanacheColor.secondaryColor,
+                        inactiveTickColor: PanacheColor.secondaryColor,
                         thumbColor: PanacheColor.primaryColor,
                         tooltipBackgroundColor: PanacheColor.primaryColor,
                         tooltipTextStyle: TextStyle(color: Colors.black),
@@ -212,6 +216,8 @@ class Sidebar extends HookWidget {
                         inactiveTrackColor: wordsNum.value > 0
                             ? PanacheColor.secondaryColor
                             : PanacheColor.errorColor,
+                        activeTickColor: PanacheColor.secondaryColor,
+                        inactiveTickColor: PanacheColor.secondaryColor,
                         thumbColor: PanacheColor.primaryColor,
                         tooltipBackgroundColor: PanacheColor.primaryColor,
                         tooltipTextStyle: TextStyle(color: Colors.black),
