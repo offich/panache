@@ -23,7 +23,7 @@ class LoremText extends HookWidget {
       );
 
       offsetAnimation.value =
-          Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero).animate(
+          Tween<Offset>(begin: const Offset(0, 0.1), end: Offset.zero).animate(
         CurvedAnimation(
           parent: animationController,
           curve: Curves.easeInOut,
