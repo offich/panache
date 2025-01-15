@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class LoremText extends HookWidget {
+class AnimatedText extends HookWidget {
   final String text;
 
-  const LoremText({super.key, required this.text});
+  const AnimatedText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
