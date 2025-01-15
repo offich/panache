@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/debouncer.dart';
 import 'package:panache/src/model/unit.dart';
+import 'package:panache/src/ui/components/gradient_text.dart';
 import 'package:panache/src/ui/style/color.dart';
 import 'package:panache/src/ui/style/text.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -43,11 +44,7 @@ class Sidebar extends HookWidget {
       spacing: 24.0,
       children: [
         Column(children: [
-          Text(
-            'Panache',
-            textAlign: TextAlign.center,
-            style: PanacheTextStyle.largeBold,
-          ),
+          GradientText('Panache'),
           Text(
             'Lorem Ipsum Dummy Text Generator',
             style: PanacheTextStyle.medium,
