@@ -22,10 +22,24 @@ class GradientText extends StatelessWidget {
           ],
         ).createShader(bounds);
       },
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: PanacheTextStyle.largeBold.copyWith(color: Colors.white),
+      child: Stack(
+        children: <Widget>[
+          // just stroke for light mode
+          Text(
+            text,
+            style: PanacheTextStyle.largeBold.copyWith(
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 1
+                ..color = Colors.black,
+            ),
+          ),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: PanacheTextStyle.largeBold.copyWith(color: Colors.white),
+          ),
+        ],
       ),
     );
   }
