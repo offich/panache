@@ -6,7 +6,7 @@ on:
       - "v*"
 
 jobs:
-  publish_release:
+  publish:
     timeout-minutes: 5
 
     runs-on: ubuntu-latest
