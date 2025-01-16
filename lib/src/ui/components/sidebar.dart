@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/debouncer.dart';
 import 'package:panache/src/model/unit.dart';
 import 'package:panache/src/ui/components/gradient_text.dart';
+import 'package:panache/src/ui/components/panache_icon_button.dart';
 import 'package:panache/src/ui/components/unit_slider.dart';
 import 'package:panache/src/ui/style/color.dart';
 import 'package:panache/src/ui/style/text.dart';
@@ -63,12 +64,9 @@ class Sidebar extends HookWidget {
                     style: PanacheTextStyle.medium,
                   ),
                   Row(children: [
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      hoverColor:
-                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: paragraphsNum.value > 0
                           ? () {
                               paragraphsNum.value -= 1;
@@ -82,12 +80,9 @@ class Sidebar extends HookWidget {
                         paragraphsNum.value = value;
                       },
                     ),
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
-                      icon: const Icon(Icons.add),
+                    PanacheIconButton(
+                      icon: const Icon(Icons.remove),
                       color: PanacheColor.primaryColor,
-                      hoverColor:
-                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: paragraphsNum.value < Unit.paragraphs.max
                           ? () {
                               paragraphsNum.value += 1;
@@ -106,12 +101,9 @@ class Sidebar extends HookWidget {
                     style: PanacheTextStyle.medium,
                   ),
                   Row(children: [
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      hoverColor:
-                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: sentencesNum.value > 0
                           ? () {
                               sentencesNum.value -= 1;
@@ -125,12 +117,9 @@ class Sidebar extends HookWidget {
                         sentencesNum.value = value;
                       },
                     ),
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
-                      icon: const Icon(Icons.add),
+                    PanacheIconButton(
+                      icon: const Icon(Icons.remove),
                       color: PanacheColor.primaryColor,
-                      hoverColor:
-                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: sentencesNum.value < Unit.sentences.max
                           ? () {
                               sentencesNum.value += 1;
@@ -149,12 +138,9 @@ class Sidebar extends HookWidget {
                     style: PanacheTextStyle.medium,
                   ),
                   Row(children: [
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      hoverColor:
-                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: wordsNum.value > 0
                           ? () {
                               wordsNum.value -= 1;
@@ -168,12 +154,9 @@ class Sidebar extends HookWidget {
                         wordsNum.value = value;
                       },
                     ),
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
-                      icon: const Icon(Icons.add),
+                    PanacheIconButton(
+                      icon: const Icon(Icons.remove),
                       color: PanacheColor.primaryColor,
-                      hoverColor:
-                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: wordsNum.value < Unit.words.max
                           ? () {
                               wordsNum.value += 1;
