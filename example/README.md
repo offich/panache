@@ -1,16 +1,14 @@
 # example
 
-A new Flutter project.
+An example Flutter project to run panache.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Before running panache on devtool extensions, you should execute below commands
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```txt
+$ cd /path/to/root/of/this/repository
+$ fvm dart run devtools_extensions build_and_copy --source=. --dest=./example/extension/devtools
+$ cd example
+$ fvm flutter run
+```
