@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/lorem.dart';
 import 'package:panache/src/ui/components/animated_text.dart';
+import 'package:panache/src/ui/components/panache_snack_bar.dart';
 import 'package:panache/src/ui/components/sidebar.dart';
 import 'package:panache/src/ui/style/color.dart';
-import 'package:panache/src/ui/style/text.dart';
 
 class Panache extends HookWidget {
   const Panache({super.key});
@@ -13,6 +13,7 @@ class Panache extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final generated = useState(Lorem().generate());
+    final copying = useState(false);
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -69,25 +70,28 @@ class Panache extends HookWidget {
                   backgroundColor: PanacheColor.thirdlyColor,
                 ),
                 padding: EdgeInsets.all(0.0),
-                icon: const Icon(Icons.copy),
+                icon: Icon(
+                  copying.value ? Icons.hourglass_empty : Icons.copy,
+                ),
                 onPressed: () async {
-                  final snackBar = SnackBar(
-                    backgroundColor: PanacheColor.primaryColor,
-                    width: 360.0,
-                    content: Text(
-                      "Copied Text!!",
-                      style:
-                          PanacheTextStyle.medium.copyWith(color: Colors.black),
-                    ),
-                    duration: const Duration(seconds: 2),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    behavior: SnackBarBehavior.floating,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  copying.value = true;
 
-                  await Clipboard.setData(ClipboardData(text: generated.value));
+                  try {
+                    await Clipboard.setData(
+                      ClipboardData(text: generated.value),
+                    );
+                    copying.value = false;
+
+                    if (context.mounted) {
+                      showSnackBar(context, 'Copied Text!!');
+                    }
+                  } catch (e) {
+                    copying.value = false;
+
+                    if (context.mounted) {
+                      showSnackBar(context, 'Copied Failure', isError: true);
+                    }
+                  }
                 },
               ),
             ),
