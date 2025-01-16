@@ -11,6 +11,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,6 +35,9 @@ jobs:
 
       - name: Build and Copy
         run: dart run devtools_extensions build_and_copy --source=. --dest=./extension/devtools
+
+      - name: Authentication
+        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
 
       - name: Publish
         run: dart pub publish
