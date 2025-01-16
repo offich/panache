@@ -81,7 +81,7 @@ class Sidebar extends HookWidget {
                       },
                     ),
                     PanacheIconButton(
-                      icon: const Icon(Icons.remove),
+                      icon: const Icon(Icons.add),
                       color: PanacheColor.primaryColor,
                       onPressed: paragraphsNum.value < Unit.paragraphs.max
                           ? () {
@@ -118,7 +118,7 @@ class Sidebar extends HookWidget {
                       },
                     ),
                     PanacheIconButton(
-                      icon: const Icon(Icons.remove),
+                      icon: const Icon(Icons.add),
                       color: PanacheColor.primaryColor,
                       onPressed: sentencesNum.value < Unit.sentences.max
                           ? () {
@@ -155,7 +155,7 @@ class Sidebar extends HookWidget {
                       },
                     ),
                     PanacheIconButton(
-                      icon: const Icon(Icons.remove),
+                      icon: const Icon(Icons.add),
                       color: PanacheColor.primaryColor,
                       onPressed: wordsNum.value < Unit.words.max
                           ? () {
