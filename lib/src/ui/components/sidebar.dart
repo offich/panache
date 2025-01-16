@@ -3,10 +3,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/debouncer.dart';
 import 'package:panache/src/model/unit.dart';
 import 'package:panache/src/ui/components/gradient_text.dart';
+import 'package:panache/src/ui/components/panache_icon_button.dart';
+import 'package:panache/src/ui/components/unit_slider.dart';
 import 'package:panache/src/ui/style/color.dart';
 import 'package:panache/src/ui/style/text.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Sidebar extends HookWidget {
   final Function({
@@ -25,6 +25,27 @@ class Sidebar extends HookWidget {
     final paragraphsNum = useState<int>(Unit.paragraphs.defaultNum);
     final sentencesNum = useState<int>(Unit.sentences.defaultNum);
     final wordsNum = useState<int>(Unit.words.defaultNum);
+
+    final decrementParagraphsNum = useCallback(() {
+      paragraphsNum.value -= 1;
+    }, []);
+    final incrementParagraphsNum = useCallback(() {
+      paragraphsNum.value += 1;
+    }, []);
+
+    final decrementSentencesNum = useCallback(() {
+      sentencesNum.value -= 1;
+    }, []);
+    final incrementSentencesNum = useCallback(() {
+      sentencesNum.value += 1;
+    });
+
+    final decrementWordsNum = useCallback(() {
+      wordsNum.value -= 1;
+    }, []);
+    final incrementWordsNum = useCallback(() {
+      wordsNum.value += 1;
+    }, []);
 
     final debouncer = Debouncer(millseconds: 200);
 
@@ -64,54 +85,35 @@ class Sidebar extends HookWidget {
                     style: PanacheTextStyle.medium,
                   ),
                   Row(children: [
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      hoverColor:
-                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
                       onPressed: paragraphsNum.value > 0
-                          ? () {
-                              paragraphsNum.value -= 1;
-                            }
+                          ? decrementParagraphsNum
                           : null,
                     ),
-                    SfSliderTheme(
-                      data: SfSliderThemeData(
-                        activeTrackColor: paragraphsNum.value > 0
-                            ? PanacheColor.secondaryColor
-                            : PanacheColor.errorColor,
-                        inactiveTrackColor: paragraphsNum.value > 0
-                            ? PanacheColor.secondaryColor
-                            : PanacheColor.errorColor,
-                        activeTickColor: PanacheColor.secondaryColor,
-                        inactiveTickColor: PanacheColor.secondaryColor,
-                        thumbColor: PanacheColor.primaryColor,
-                        tooltipBackgroundColor: PanacheColor.primaryColor,
-                        tooltipTextStyle: TextStyle(color: Colors.black),
-                        overlayColor:
-                            PanacheColor.primaryColor.withValues(alpha: 0.1),
-                        overlayRadius: 20.0,
-                      ),
-                      child: SfSlider(
-                        min: 0.0,
-                        max: Unit.paragraphs.max,
-                        interval: Unit.paragraphs.interval,
-                        showTicks: true,
-                        showLabels: true,
-                        enableTooltip: true,
-                        value: paragraphsNum.value,
-                        onChanged: (value) {
-                          paragraphsNum.value = value.floor();
-                        },
-                      ),
+                    UnitSlider(
+                      unit: Unit.paragraphs,
+                      unitNum: paragraphsNum.value,
+                      onChanged: (value) {
+                        paragraphsNum.value = value;
+                      },
+                      onKeyArrowUp: paragraphsNum.value < Unit.paragraphs.max
+                          ? incrementParagraphsNum
+                          : null,
+                      onKeyArrowRight: paragraphsNum.value < Unit.paragraphs.max
+                          ? incrementParagraphsNum
+                          : null,
+                      onKeyArrowLeft: paragraphsNum.value > 0
+                          ? incrementParagraphsNum
+                          : null,
+                      onKeyArrowDown: paragraphsNum.value > 0
+                          ? incrementParagraphsNum
+                          : null,
                     ),
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.add),
                       color: PanacheColor.primaryColor,
-                      hoverColor:
-                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: paragraphsNum.value < Unit.paragraphs.max
                           ? () {
                               paragraphsNum.value += 1;
@@ -130,54 +132,32 @@ class Sidebar extends HookWidget {
                     style: PanacheTextStyle.medium,
                   ),
                   Row(children: [
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      hoverColor:
-                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
-                      onPressed: sentencesNum.value > 0
-                          ? () {
-                              sentencesNum.value -= 1;
-                            }
+                      onPressed:
+                          sentencesNum.value > 0 ? decrementSentencesNum : null,
+                    ),
+                    UnitSlider(
+                      unit: Unit.sentences,
+                      unitNum: sentencesNum.value,
+                      onChanged: (value) {
+                        sentencesNum.value = value;
+                      },
+                      onKeyArrowUp: sentencesNum.value < Unit.sentences.max
+                          ? incrementSentencesNum
                           : null,
+                      onKeyArrowRight: sentencesNum.value < Unit.sentences.max
+                          ? incrementSentencesNum
+                          : null,
+                      onKeyArrowLeft:
+                          sentencesNum.value > 0 ? incrementSentencesNum : null,
+                      onKeyArrowDown:
+                          sentencesNum.value > 0 ? incrementSentencesNum : null,
                     ),
-                    SfSliderTheme(
-                      data: SfSliderThemeData(
-                        activeTrackColor: sentencesNum.value > 0
-                            ? PanacheColor.secondaryColor
-                            : PanacheColor.errorColor,
-                        inactiveTrackColor: sentencesNum.value > 0
-                            ? PanacheColor.secondaryColor
-                            : PanacheColor.errorColor,
-                        activeTickColor: PanacheColor.secondaryColor,
-                        inactiveTickColor: PanacheColor.secondaryColor,
-                        thumbColor: PanacheColor.primaryColor,
-                        tooltipBackgroundColor: PanacheColor.primaryColor,
-                        tooltipTextStyle: TextStyle(color: Colors.black),
-                        overlayColor:
-                            PanacheColor.primaryColor.withValues(alpha: 0.1),
-                        overlayRadius: 20.0,
-                      ),
-                      child: SfSlider(
-                        min: 0.0,
-                        max: Unit.sentences.max,
-                        interval: Unit.sentences.interval,
-                        showTicks: true,
-                        showLabels: true,
-                        enableTooltip: true,
-                        value: sentencesNum.value,
-                        onChanged: (value) {
-                          sentencesNum.value = value.floor();
-                        },
-                      ),
-                    ),
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.add),
                       color: PanacheColor.primaryColor,
-                      hoverColor:
-                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: sentencesNum.value < Unit.sentences.max
                           ? () {
                               sentencesNum.value += 1;
@@ -196,54 +176,31 @@ class Sidebar extends HookWidget {
                     style: PanacheTextStyle.medium,
                   ),
                   Row(children: [
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      hoverColor:
-                          PanacheColor.secondaryColor.withValues(alpha: 0.1),
-                      onPressed: wordsNum.value > 0
-                          ? () {
-                              wordsNum.value -= 1;
-                            }
+                      onPressed: wordsNum.value > 0 ? decrementWordsNum : null,
+                    ),
+                    UnitSlider(
+                      unit: Unit.words,
+                      unitNum: wordsNum.value,
+                      onChanged: (value) {
+                        wordsNum.value = value;
+                      },
+                      onKeyArrowUp: wordsNum.value < Unit.words.max
+                          ? incrementWordsNum
                           : null,
+                      onKeyArrowRight: wordsNum.value < Unit.words.max
+                          ? incrementWordsNum
+                          : null,
+                      onKeyArrowLeft:
+                          wordsNum.value > 0 ? incrementWordsNum : null,
+                      onKeyArrowDown:
+                          wordsNum.value > 0 ? incrementWordsNum : null,
                     ),
-                    SfSliderTheme(
-                      data: SfSliderThemeData(
-                        activeTrackColor: wordsNum.value > 0
-                            ? PanacheColor.secondaryColor
-                            : PanacheColor.errorColor,
-                        inactiveTrackColor: wordsNum.value > 0
-                            ? PanacheColor.secondaryColor
-                            : PanacheColor.errorColor,
-                        activeTickColor: PanacheColor.secondaryColor,
-                        inactiveTickColor: PanacheColor.secondaryColor,
-                        thumbColor: PanacheColor.primaryColor,
-                        tooltipBackgroundColor: PanacheColor.primaryColor,
-                        tooltipTextStyle: TextStyle(color: Colors.black),
-                        overlayColor:
-                            PanacheColor.primaryColor.withValues(alpha: 0.1),
-                        overlayRadius: 20.0,
-                      ),
-                      child: SfSlider(
-                        min: 0.0,
-                        max: Unit.words.max,
-                        interval: Unit.words.interval,
-                        showTicks: true,
-                        showLabels: true,
-                        enableTooltip: true,
-                        value: wordsNum.value,
-                        onChanged: (value) {
-                          wordsNum.value = value.floor();
-                        },
-                      ),
-                    ),
-                    IconButton(
-                      padding: EdgeInsets.all(0.0),
+                    PanacheIconButton(
                       icon: const Icon(Icons.add),
                       color: PanacheColor.primaryColor,
-                      hoverColor:
-                          PanacheColor.primaryColor.withValues(alpha: 0.1),
                       onPressed: wordsNum.value < Unit.words.max
                           ? () {
                               wordsNum.value += 1;
