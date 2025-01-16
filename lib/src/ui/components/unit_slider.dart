@@ -34,8 +34,8 @@ class UnitSlider extends StatelessWidget {
       ),
       child: SfSlider(
         min: 0.0,
-        max: Unit.paragraphs.max,
-        interval: Unit.paragraphs.interval,
+        max: unit.max,
+        interval: unit.interval,
         showTicks: true,
         showLabels: true,
         enableTooltip: true,
