@@ -37,4 +37,4 @@ jobs:
         run: dart run devtools_extensions build_and_copy --source=. --dest=./extension/devtools
 
       - name: Publish
-        run: dart pub publish
+        run: dart pub publish --force
