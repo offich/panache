@@ -26,6 +26,27 @@ class Sidebar extends HookWidget {
     final sentencesNum = useState<int>(Unit.sentences.defaultNum);
     final wordsNum = useState<int>(Unit.words.defaultNum);
 
+    final decrementParagraphsNum = useCallback(() {
+      paragraphsNum.value -= 1;
+    }, []);
+    final incrementParagraphsNum = useCallback(() {
+      paragraphsNum.value += 1;
+    }, []);
+
+    final decrementSentencesNum = useCallback(() {
+      sentencesNum.value -= 1;
+    }, []);
+    final incrementSentencesNum = useCallback(() {
+      sentencesNum.value += 1;
+    });
+
+    final decrementWordsNum = useCallback(() {
+      wordsNum.value -= 1;
+    }, []);
+    final incrementWordsNum = useCallback(() {
+      wordsNum.value += 1;
+    }, []);
+
     final debouncer = Debouncer(millseconds: 200);
 
     useEffect(() {
@@ -68,9 +89,7 @@ class Sidebar extends HookWidget {
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
                       onPressed: paragraphsNum.value > 0
-                          ? () {
-                              paragraphsNum.value -= 1;
-                            }
+                          ? decrementParagraphsNum
                           : null,
                     ),
                     UnitSlider(
@@ -79,6 +98,18 @@ class Sidebar extends HookWidget {
                       onChanged: (value) {
                         paragraphsNum.value = value;
                       },
+                      onKeyArrowUp: paragraphsNum.value < Unit.paragraphs.max
+                          ? incrementParagraphsNum
+                          : null,
+                      onKeyArrowRight: paragraphsNum.value < Unit.paragraphs.max
+                          ? incrementParagraphsNum
+                          : null,
+                      onKeyArrowLeft: paragraphsNum.value > 0
+                          ? incrementParagraphsNum
+                          : null,
+                      onKeyArrowDown: paragraphsNum.value > 0
+                          ? incrementParagraphsNum
+                          : null,
                     ),
                     PanacheIconButton(
                       icon: const Icon(Icons.add),
@@ -104,11 +135,8 @@ class Sidebar extends HookWidget {
                     PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      onPressed: sentencesNum.value > 0
-                          ? () {
-                              sentencesNum.value -= 1;
-                            }
-                          : null,
+                      onPressed:
+                          sentencesNum.value > 0 ? decrementSentencesNum : null,
                     ),
                     UnitSlider(
                       unit: Unit.sentences,
@@ -116,6 +144,16 @@ class Sidebar extends HookWidget {
                       onChanged: (value) {
                         sentencesNum.value = value;
                       },
+                      onKeyArrowUp: sentencesNum.value < Unit.sentences.max
+                          ? incrementSentencesNum
+                          : null,
+                      onKeyArrowRight: sentencesNum.value < Unit.sentences.max
+                          ? incrementSentencesNum
+                          : null,
+                      onKeyArrowLeft:
+                          sentencesNum.value > 0 ? incrementSentencesNum : null,
+                      onKeyArrowDown:
+                          sentencesNum.value > 0 ? incrementSentencesNum : null,
                     ),
                     PanacheIconButton(
                       icon: const Icon(Icons.add),
@@ -141,11 +179,7 @@ class Sidebar extends HookWidget {
                     PanacheIconButton(
                       icon: const Icon(Icons.remove),
                       color: PanacheColor.secondaryColor,
-                      onPressed: wordsNum.value > 0
-                          ? () {
-                              wordsNum.value -= 1;
-                            }
-                          : null,
+                      onPressed: wordsNum.value > 0 ? decrementWordsNum : null,
                     ),
                     UnitSlider(
                       unit: Unit.words,
@@ -153,6 +187,16 @@ class Sidebar extends HookWidget {
                       onChanged: (value) {
                         wordsNum.value = value;
                       },
+                      onKeyArrowUp: wordsNum.value < Unit.words.max
+                          ? incrementWordsNum
+                          : null,
+                      onKeyArrowRight: wordsNum.value < Unit.words.max
+                          ? incrementWordsNum
+                          : null,
+                      onKeyArrowLeft:
+                          wordsNum.value > 0 ? incrementWordsNum : null,
+                      onKeyArrowDown:
+                          wordsNum.value > 0 ? incrementWordsNum : null,
                     ),
                     PanacheIconButton(
                       icon: const Icon(Icons.add),

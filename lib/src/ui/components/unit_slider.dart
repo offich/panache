@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:panache/src/model/unit.dart';
 import 'package:panache/src/ui/style/color.dart';
@@ -9,11 +10,19 @@ class UnitSlider extends HookWidget {
   final Unit unit;
   final int unitNum;
   final Function(int) onChanged;
+  final VoidCallback? onKeyArrowUp;
+  final VoidCallback? onKeyArrowRight;
+  final VoidCallback? onKeyArrowLeft;
+  final VoidCallback? onKeyArrowDown;
 
   const UnitSlider({
     required this.unit,
     required this.unitNum,
     required this.onChanged,
+    this.onKeyArrowUp,
+    this.onKeyArrowRight,
+    this.onKeyArrowLeft,
+    this.onKeyArrowDown,
     super.key,
   });
 
@@ -32,6 +41,33 @@ class UnitSlider extends HookWidget {
 
     return Focus(
       focusNode: focusNode,
+      onKeyEvent: (node, event) {
+        if (event is! KeyDownEvent) {
+          return KeyEventResult.ignored;
+        }
+
+        if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+          onKeyArrowUp?.call();
+          return KeyEventResult.handled;
+        }
+
+        if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+          onKeyArrowLeft?.call();
+          return KeyEventResult.handled;
+        }
+
+        if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+          onKeyArrowRight?.call();
+          return KeyEventResult.handled;
+        }
+
+        if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+          onKeyArrowDown?.call();
+          return KeyEventResult.handled;
+        }
+
+        return KeyEventResult.ignored; // イベントを無視
+      },
       child: SfSliderTheme(
         data: SfSliderThemeData(
           activeTrackColor: unitNum > 0
