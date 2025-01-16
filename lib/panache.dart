@@ -83,10 +83,14 @@ class Panache extends HookWidget {
                     copying.value = false;
 
                     if (context.mounted) {
-                      showSnackBar(context);
+                      showSnackBar(context, 'Copied Text!!');
                     }
                   } catch (e) {
                     copying.value = false;
+
+                    if (context.mounted) {
+                      showSnackBar(context, 'Copied Failure', isError: true);
+                    }
                   }
                 },
               ),

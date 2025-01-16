@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:panache/src/ui/style/color.dart';
 import 'package:panache/src/ui/style/text.dart';
 
-showSnackBar(BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(PanacheSnackBar());
+showSnackBar(BuildContext context, String text, {bool isError = false}) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    PanacheSnackBar(text: text, isError: isError),
+  );
 }
 
 class PanacheSnackBar extends SnackBar {
-  PanacheSnackBar({super.key})
+  final String text;
+  final bool isError;
+
+  PanacheSnackBar({super.key, required this.text, this.isError = false})
       : super(
-          backgroundColor: PanacheColor.primaryColor,
+          backgroundColor:
+              isError ? PanacheColor.errorColor : PanacheColor.primaryColor,
           width: 360.0,
           content: Text(
-            "Copied Text!!",
+            text,
             style: PanacheTextStyle.medium.copyWith(color: Colors.black),
           ),
           duration: const Duration(seconds: 2),
