@@ -23,8 +23,16 @@ jobs:
         with:
           sdk: 3.6.0
 
+      - uses: kuhnroyal/flutter-fvm-config-action@v3
+        id: fvm-config-action
+
+      - uses: subosito/flutter-action@v2.18.0
+        with:
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+
       - name: install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Validate
         run: dart run devtools_extensions validate --package=.
