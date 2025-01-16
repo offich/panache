@@ -43,12 +43,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-*/extension/devtools/build/*
-!/*/extension/devtools/build/.gitkeep
-
-# FVM Version Cache
-.fvm/
-
-devtools_options.yaml
-!/example/devtools_options.yaml

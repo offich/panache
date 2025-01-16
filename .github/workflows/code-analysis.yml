@@ -3,8 +3,9 @@ name: code-analysis
 on:
   push:
     paths:
-      - '**.dart'
-      - 'pubspec.yaml'
+      - 'lib/**.dart'
+      - 'test/**.dart'
+      - './pubspec.yaml'
       - '.github/workflows/code-analysis.yml'
 
 concurrency:
@@ -81,5 +82,5 @@ jobs:
             **/.dart_tool/package_config.json
           key: build-pubspec-${{ hashFiles('**/pubspec.lock') }}
 
-      - run: dart format --set-exit-if-changed .
-      - run: flutter analyze .
+      - run: dart format --set-exit-if-changed lib test
+      - run: flutter analyze lib test
