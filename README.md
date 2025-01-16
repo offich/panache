@@ -6,7 +6,7 @@ A [Flutter DevTools extension](https://pub.dev/packages/devtools_extensions) for
 
 This package adds a new tool to Flutter's DevTools, utilizing the new `devtools_extensions` framework. With this tool, you can generate dummy text by controlling the number of words, sentences, and paragraphs on the left. You can also copy the text to clipboard and paste it anywhere.
 
-[!screenshot](/resources/screenshot.png)
+![screenshot](/resources/screenshot.png)
 
 ## Getting started
 
