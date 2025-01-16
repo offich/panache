@@ -65,7 +65,7 @@ class Panache extends HookWidget {
               height: 48,
               child: IconButton(
                 style: IconButton.styleFrom(
-                  foregroundColor: PanacheColor.secondaryColor,
+                  foregroundColor: PanacheColor.primaryColor,
                   backgroundColor: PanacheColor.thirdlyColor,
                 ),
                 padding: EdgeInsets.all(0.0),
