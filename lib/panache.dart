@@ -13,6 +13,7 @@ class Panache extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final generated = useState(Lorem().generate());
+    final copying = useState(false);
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -69,11 +70,24 @@ class Panache extends HookWidget {
                   backgroundColor: PanacheColor.thirdlyColor,
                 ),
                 padding: EdgeInsets.all(0.0),
-                icon: const Icon(Icons.copy),
+                icon: Icon(
+                  copying.value ? Icons.hourglass_empty : Icons.copy,
+                ),
                 onPressed: () async {
-                  showSnackBar(context);
+                  copying.value = true;
 
-                  await Clipboard.setData(ClipboardData(text: generated.value));
+                  try {
+                    await Clipboard.setData(
+                      ClipboardData(text: generated.value),
+                    );
+                    copying.value = false;
+
+                    if (context.mounted) {
+                      showSnackBar(context);
+                    }
+                  } catch (e) {
+                    copying.value = false;
+                  }
                 },
               ),
             ),
