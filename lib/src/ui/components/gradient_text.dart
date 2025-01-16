@@ -17,8 +17,8 @@ class GradientText extends StatelessWidget {
           colors: [
             PanacheColor.secondaryColor,
             PanacheColor.primaryColor,
-            Color.fromRGBO(48, 133, 195, 1.0),
             PanacheColor.thirdlyColor,
+            PanacheColor.fourthlyColor,
           ],
         ).createShader(bounds);
       },
