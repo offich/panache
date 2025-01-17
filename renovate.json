@@ -5,20 +5,31 @@
     ":prHourlyLimitNone"
   ],
   "timezone": "Asia/Tokyo",
-  "labels": ["deps"],
+  "labels": [
+    "deps"
+  ],
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
-  "schedule": ["before 10am on Monday"],
+  "schedule": [
+    "before 10am on Monday"
+  ],
   "vulnerabilityAlerts": {
-    "labels": ["security"]
+    "labels": [
+      "security"
+    ]
   },
   "packageRules": [
     {
-      "updateTypes": ["patch"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "enabled": false
     }
   ],
-  "ignoreDeps": ["flutter", "dart"],
+  "ignoreDeps": [
+    "flutter",
+    "dart"
+  ],
   "ignorePaths": [
     ".github/workflows",
     ".fvmrc",
