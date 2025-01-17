@@ -23,7 +23,7 @@
     ".github/workflows",
     ".fvmrc",
     "example/android",
-    "example/pubspec.yml",
+    "example/pubspec.yaml",
     "example/.fvmrc"
   ]
 }
