@@ -1,3 +1,7 @@
+## 0.0.1
+
+  - First Official Release!! 🎉🎉🎉
+
 ## 0.0.1-dev.2
 
   - Update README.md
