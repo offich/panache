@@ -16,7 +16,7 @@ To add this package to your project, run:
 $ flutter pub add panache
 ```
 
-That’s it! Now you just need to open your DevTools and use the SharedPreferences tool!
+That’s it! Now you just need to open your DevTools and use lorem ipsum dummy text generator tool!
 
 ## Contributing to this package
 
