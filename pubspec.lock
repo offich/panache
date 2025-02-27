@@ -393,10 +393,10 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_core
-      sha256: "794870919ca73e29c6cb25392a097cdfe58da4d6f3f3d3eccc529ecf52f78752"
+      sha256: "393db014b90865222f8c442dd989a9ba6107bb92bf4d4774257d60a3ee05053f"
       url: "https://pub.dev"
     source: hosted
-    version: "28.1.39"
+    version: "28.2.7"
   syncfusion_flutter_sliders:
     dependency: "direct main"
     description:
