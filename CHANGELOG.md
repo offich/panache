@@ -1,3 +1,7 @@
+## 0.0.4
+
+  - Improve score on pub.dev
+
 ## 0.0.3
 
   - Bump Flutter SDK to 3.29.0
