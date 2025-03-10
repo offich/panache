@@ -5,5 +5,4 @@ analysis_options.yaml
 devtools_options.yaml
 panache.iml
 
-example/
 test/
