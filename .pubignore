@@ -6,6 +6,5 @@ devtools_options.yaml
 panache.iml
 renovate.json
 
-build/
 test/
 resources/
