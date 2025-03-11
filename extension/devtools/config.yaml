@@ -1,5 +1,5 @@
 name: panache
 issueTracker: https://github.com/offich/panache/issues
-version: 0.0.4
+version: 0.0.5
 materialIconCodePoint: '0xe651'
 requiresConnection: false

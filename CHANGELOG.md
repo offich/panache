@@ -1,3 +1,9 @@
+## 0.0.5
+
+  - Fix dart sdk version in CI.
+  - Fix repo name in issue trakcer.
+  - Include build when publishing.
+
 ## 0.0.4
 
   - Improve score on pub.dev
