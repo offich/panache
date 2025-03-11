@@ -2,7 +2,7 @@ name: panache
 description: "Lorem Ipsum Dummy Text Generator for Flutter DevTools Extension"
 homepage: https://offich.me
 repository: https://github.com/offich/panache
-issue_tracker: https://github.com/offich/sangria/issues
+issue_tracker: https://github.com/offich/panache/issues
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 
