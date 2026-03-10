@@ -40,7 +40,7 @@ dependencies:
   devtools_extensions: 0.3.1
   flutter_hooks: 0.21.2
   syncfusion_flutter_sliders: 28.2.7
-  syncfusion_flutter_core: 28.2.7
+  syncfusion_flutter_core: 32.2.9
 
 dev_dependencies:
   flutter_test:
