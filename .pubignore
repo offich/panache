@@ -5,6 +5,12 @@ analysis_options.yaml
 devtools_options.yaml
 panache.iml
 renovate.json
+mise.toml
+package.json
+pnpm-lock.yaml
+CLAUDE.md
 
 test/
 resources/
+node_modules/
+docs/
