@@ -10,7 +10,7 @@ Github MCP を用いて PR の内容を取得し、品質憲章や各種ガイ�
 
 ## 必須引数
 
-  - `$PR_URL`: Github Pull Request URL (例: <https://github.com/offich/gintonic/pull/123>)
+  - `$PR_URL`: Github Pull Request URL (例: <https://github.com/offich/panache/pull/123>)
 
 ## 動作フロー
 
@@ -97,7 +97,7 @@ PR の diff 箇所に合わせて、下記を参照してください。
 ### 基本的な使用方法
 
     ```bash
-    /review:review-pr https://github.com/offich/gintonic/pull/10
+    /review:review-pr https://github.com/offich/panache/pull/10
     ```
 
   - PRの変更内容を取得
