@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:panache/src/ui/style/color.dart';
 import 'package:panache/src/ui/style/text.dart';
 
-showSnackBar(BuildContext context, String text, {bool isError = false}) {
+void showSnackBar(BuildContext context, String text, {bool isError = false}) {
   ScaffoldMessenger.of(context).showSnackBar(
     PanacheSnackBar(text: text, isError: isError),
   );
