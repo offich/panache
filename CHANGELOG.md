@@ -1,3 +1,9 @@
+## Unreleased
+
+### Changed
+
+  - flutter 3.38.10
+
 ## [0.0.5] - 2025-03-11
 
 ### Changed
