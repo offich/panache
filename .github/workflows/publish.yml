@@ -42,3 +42,33 @@ jobs:
 
       - name: Publish
         run: dart pub publish --force
+
+  release:
+    needs: [publish]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Extract release notes from CHANGELOG
+        id: release_notes
+        uses: octivi/release-notes-from-changelog@7e6de14efd823919839acf82f08041f885c8fca9 # v1.0.0
+        with:
+          tag: ${{ github.ref_name }}
+          changelog: CHANGELOG.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body_path: ${{ steps.release_notes.outputs.release_notes }}
+          draft: false
+          prerelease: false
